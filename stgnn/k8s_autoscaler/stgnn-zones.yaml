@@ -1,0 +1,932 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: metaverse
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zone-1
+  namespace: metaverse
+  labels:
+    app: stgnn-zone
+    zone: zone-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      zone: zone-1
+  template:
+    metadata:
+      labels:
+        zone: zone-1
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9105"
+    spec:
+      containers:
+        - name: zone-1-container
+          image: python:3.10-slim
+          command: ["python3", "-m", "http.server", "8080"]
+          resources:
+            requests:
+              cpu: "300m"
+            limits:
+              cpu: "300m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zone-2
+  namespace: metaverse
+  labels:
+    app: stgnn-zone
+    zone: zone-2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      zone: zone-2
+  template:
+    metadata:
+      labels:
+        zone: zone-2
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9105"
+    spec:
+      containers:
+        - name: zone-2-container
+          image: python:3.10-slim
+          command: ["python3", "-m", "http.server", "8080"]
+          resources:
+            requests:
+              cpu: "300m"
+            limits:
+              cpu: "300m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zone-3
+  namespace: metaverse
+  labels:
+    app: stgnn-zone
+    zone: zone-3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      zone: zone-3
+  template:
+    metadata:
+      labels:
+        zone: zone-3
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9105"
+    spec:
+      containers:
+        - name: zone-3-container
+          image: python:3.10-slim
+          command: ["python3", "-m", "http.server", "8080"]
+          resources:
+            requests:
+              cpu: "300m"
+            limits:
+              cpu: "300m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zone-4
+  namespace: metaverse
+  labels:
+    app: stgnn-zone
+    zone: zone-4
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      zone: zone-4
+  template:
+    metadata:
+      labels:
+        zone: zone-4
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9105"
+    spec:
+      containers:
+        - name: zone-4-container
+          image: python:3.10-slim
+          command: ["python3", "-m", "http.server", "8080"]
+          resources:
+            requests:
+              cpu: "300m"
+            limits:
+              cpu: "300m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zone-5
+  namespace: metaverse
+  labels:
+    app: stgnn-zone
+    zone: zone-5
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      zone: zone-5
+  template:
+    metadata:
+      labels:
+        zone: zone-5
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9105"
+    spec:
+      containers:
+        - name: zone-5-container
+          image: python:3.10-slim
+          command: ["python3", "-m", "http.server", "8080"]
+          resources:
+            requests:
+              cpu: "300m"
+            limits:
+              cpu: "300m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zone-6
+  namespace: metaverse
+  labels:
+    app: stgnn-zone
+    zone: zone-6
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      zone: zone-6
+  template:
+    metadata:
+      labels:
+        zone: zone-6
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9105"
+    spec:
+      containers:
+        - name: zone-6-container
+          image: python:3.10-slim
+          command: ["python3", "-m", "http.server", "8080"]
+          resources:
+            requests:
+              cpu: "300m"
+            limits:
+              cpu: "300m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zone-7
+  namespace: metaverse
+  labels:
+    app: stgnn-zone
+    zone: zone-7
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      zone: zone-7
+  template:
+    metadata:
+      labels:
+        zone: zone-7
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9105"
+    spec:
+      containers:
+        - name: zone-7-container
+          image: python:3.10-slim
+          command: ["python3", "-m", "http.server", "8080"]
+          resources:
+            requests:
+              cpu: "300m"
+            limits:
+              cpu: "300m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zone-8
+  namespace: metaverse
+  labels:
+    app: stgnn-zone
+    zone: zone-8
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      zone: zone-8
+  template:
+    metadata:
+      labels:
+        zone: zone-8
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9105"
+    spec:
+      containers:
+        - name: zone-8-container
+          image: python:3.10-slim
+          command: ["python3", "-m", "http.server", "8080"]
+          resources:
+            requests:
+              cpu: "300m"
+            limits:
+              cpu: "300m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zone-9
+  namespace: metaverse
+  labels:
+    app: stgnn-zone
+    zone: zone-9
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      zone: zone-9
+  template:
+    metadata:
+      labels:
+        zone: zone-9
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9105"
+    spec:
+      containers:
+        - name: zone-9-container
+          image: python:3.10-slim
+          command: ["python3", "-m", "http.server", "8080"]
+          resources:
+            requests:
+              cpu: "300m"
+            limits:
+              cpu: "300m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zone-10
+  namespace: metaverse
+  labels:
+    app: stgnn-zone
+    zone: zone-10
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      zone: zone-10
+  template:
+    metadata:
+      labels:
+        zone: zone-10
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9105"
+    spec:
+      containers:
+        - name: zone-10-container
+          image: python:3.10-slim
+          command: ["python3", "-m", "http.server", "8080"]
+          resources:
+            requests:
+              cpu: "300m"
+            limits:
+              cpu: "300m"
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zone-11
+  namespace: metaverse
+  labels:
+    app: stgnn-zone
+    zone: zone-11
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      zone: zone-11
+  template:
+    metadata:
+      labels:
+        zone: zone-11
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9105"
+    spec:
+      containers:
+        - name: zone-11-container
+          image: python:3.10-slim
+          command: ["python3", "-m", "http.server", "8080"]
+          resources:
+            requests:
+              cpu: "300m"
+            limits:
+              cpu: "300m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zone-12
+  namespace: metaverse
+  labels:
+    app: stgnn-zone
+    zone: zone-12
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      zone: zone-12
+  template:
+    metadata:
+      labels:
+        zone: zone-12
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9105"
+    spec:
+      containers:
+        - name: zone-12-container
+          image: python:3.10-slim
+          command: ["python3", "-m", "http.server", "8080"]
+          resources:
+            requests:
+              cpu: "300m"
+            limits:
+              cpu: "300m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zone-13
+  namespace: metaverse
+  labels:
+    app: stgnn-zone
+    zone: zone-13
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      zone: zone-13
+  template:
+    metadata:
+      labels:
+        zone: zone-13
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9105"
+    spec:
+      containers:
+        - name: zone-13-container
+          image: python:3.10-slim
+          command: ["python3", "-m", "http.server", "8080"]
+          resources:
+            requests:
+              cpu: "300m"
+            limits:
+              cpu: "300m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zone-14
+  namespace: metaverse
+  labels:
+    app: stgnn-zone
+    zone: zone-14
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      zone: zone-14
+  template:
+    metadata:
+      labels:
+        zone: zone-14
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9105"
+    spec:
+      containers:
+        - name: zone-14-container
+          image: python:3.10-slim
+          command: ["python3", "-m", "http.server", "8080"]
+          resources:
+            requests:
+              cpu: "300m"
+            limits:
+              cpu: "300m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zone-15
+  namespace: metaverse
+  labels:
+    app: stgnn-zone
+    zone: zone-15
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      zone: zone-15
+  template:
+    metadata:
+      labels:
+        zone: zone-15
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9105"
+    spec:
+      containers:
+        - name: zone-15-container
+          image: python:3.10-slim
+          command: ["python3", "-m", "http.server", "8080"]
+          resources:
+            requests:
+              cpu: "300m"
+            limits:
+              cpu: "300m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zone-16
+  namespace: metaverse
+  labels:
+    app: stgnn-zone
+    zone: zone-16
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      zone: zone-16
+  template:
+    metadata:
+      labels:
+        zone: zone-16
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9105"
+    spec:
+      containers:
+        - name: zone-16-container
+          image: python:3.10-slim
+          command: ["python3", "-m", "http.server", "8080"]
+          resources:
+            requests:
+              cpu: "300m"
+            limits:
+              cpu: "300m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zone-17
+  namespace: metaverse
+  labels:
+    app: stgnn-zone
+    zone: zone-17
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      zone: zone-17
+  template:
+    metadata:
+      labels:
+        zone: zone-17
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9105"
+    spec:
+      containers:
+        - name: zone-17-container
+          image: python:3.10-slim
+          command: ["python3", "-m", "http.server", "8080"]
+          resources:
+            requests:
+              cpu: "300m"
+            limits:
+              cpu: "300m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zone-18
+  namespace: metaverse
+  labels:
+    app: stgnn-zone
+    zone: zone-18
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      zone: zone-18
+  template:
+    metadata:
+      labels:
+        zone: zone-18
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9105"
+    spec:
+      containers:
+        - name: zone-18-container
+          image: python:3.10-slim
+          command: ["python3", "-m", "http.server", "8080"]
+          resources:
+            requests:
+              cpu: "300m"
+            limits:
+              cpu: "300m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zone-19
+  namespace: metaverse
+  labels:
+    app: stgnn-zone
+    zone: zone-19
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      zone: zone-19
+  template:
+    metadata:
+      labels:
+        zone: zone-19
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9105"
+    spec:
+      containers:
+        - name: zone-19-container
+          image: python:3.10-slim
+          command: ["python3", "-m", "http.server", "8080"]
+          resources:
+            requests:
+              cpu: "300m"
+            limits:
+              cpu: "300m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zone-20
+  namespace: metaverse
+  labels:
+    app: stgnn-zone
+    zone: zone-20
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      zone: zone-20
+  template:
+    metadata:
+      labels:
+        zone: zone-20
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9105"
+    spec:
+      containers:
+        - name: zone-20-container
+          image: python:3.10-slim
+          command: ["python3", "-m", "http.server", "8080"]
+          resources:
+            requests:
+              cpu: "300m"
+            limits:
+              cpu: "300m"
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: zone-21
+    namespace: metaverse
+    labels:
+        app: stgnn-zone
+        zone: zone-21
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            zone: zone-21
+    template:
+        metadata:
+            labels:
+                zone: zone-21
+            annotations:
+                prometheus.io/scrape: "true"
+                prometheus.io/port: "9105"
+        spec:
+            containers:
+                - name: zone-21-container
+                  image: python:3.10-slim
+                  command: ["python3", "-m", "http.server", "8080"]
+                  resources:
+                      requests:
+                          cpu: "300m"
+                      limits:
+                          cpu: "300m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: zone-22
+    namespace: metaverse
+    labels:
+        app: stgnn-zone
+        zone: zone-22
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            zone: zone-22
+    template:
+        metadata:
+            labels:
+                zone: zone-22
+            annotations:
+                prometheus.io/scrape: "true"
+                prometheus.io/port: "9105"
+        spec:
+            containers:
+                - name: zone-22-container
+                  image: python:3.10-slim
+                  command: ["python3", "-m", "http.server", "8080"]
+                  resources:
+                      requests:
+                          cpu: "300m"
+                      limits:
+                          cpu: "300m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: zone-23
+    namespace: metaverse
+    labels:
+        app: stgnn-zone
+        zone: zone-23
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            zone: zone-23
+    template:
+        metadata:
+            labels:
+                zone: zone-23
+            annotations:
+                prometheus.io/scrape: "true"
+                prometheus.io/port: "9105"
+        spec:
+            containers:
+                - name: zone-23-container
+                  image: python:3.10-slim
+                  command: ["python3", "-m", "http.server", "8080"]
+                  resources:
+                      requests:
+                          cpu: "300m"
+                      limits:
+                          cpu: "300m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: zone-24
+    namespace: metaverse
+    labels:
+        app: stgnn-zone
+        zone: zone-24
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            zone: zone-24
+    template:
+        metadata:
+            labels:
+                zone: zone-24
+            annotations:
+                prometheus.io/scrape: "true"
+                prometheus.io/port: "9105"
+        spec:
+            containers:
+                - name: zone-24-container
+                  image: python:3.10-slim
+                  command: ["python3", "-m", "http.server", "8080"]
+                  resources:
+                      requests:
+                          cpu: "300m"
+                      limits:
+                          cpu: "300m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: zone-25
+    namespace: metaverse
+    labels:
+        app: stgnn-zone
+        zone: zone-25
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            zone: zone-25
+    template:
+        metadata:
+            labels:
+                zone: zone-25
+            annotations:
+                prometheus.io/scrape: "true"
+                prometheus.io/port: "9105"
+        spec:
+            containers:
+                - name: zone-25-container
+                  image: python:3.10-slim
+                  command: ["python3", "-m", "http.server", "8080"]
+                  resources:
+                      requests:
+                          cpu: "300m"
+                      limits:
+                          cpu: "300m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: zone-26
+    namespace: metaverse
+    labels:
+        app: stgnn-zone
+        zone: zone-26
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            zone: zone-26
+    template:
+        metadata:
+            labels:
+                zone: zone-26
+            annotations:
+                prometheus.io/scrape: "true"
+                prometheus.io/port: "9105"
+        spec:
+            containers:
+                - name: zone-26-container
+                  image: python:3.10-slim
+                  command: ["python3", "-m", "http.server", "8080"]
+                  resources:
+                      requests:
+                          cpu: "300m"
+                      limits:
+                          cpu: "300m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: zone-27
+    namespace: metaverse
+    labels:
+        app: stgnn-zone
+        zone: zone-27
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            zone: zone-27
+    template:
+        metadata:
+            labels:
+                zone: zone-27
+            annotations:
+                prometheus.io/scrape: "true"
+                prometheus.io/port: "9105"
+        spec:
+            containers:
+                - name: zone-27-container
+                  image: python:3.10-slim
+                  command: ["python3", "-m", "http.server", "8080"]
+                  resources:
+                      requests:
+                          cpu: "300m"
+                      limits:
+                          cpu: "300m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: zone-28
+    namespace: metaverse
+    labels:
+        app: stgnn-zone
+        zone: zone-28
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            zone: zone-28
+    template:
+        metadata:
+            labels:
+                zone: zone-28
+            annotations:
+                prometheus.io/scrape: "true"
+                prometheus.io/port: "9105"
+        spec:
+            containers:
+                - name: zone-28-container
+                  image: python:3.10-slim
+                  command: ["python3", "-m", "http.server", "8080"]
+                  resources:
+                      requests:
+                          cpu: "300m"
+                      limits:
+                          cpu: "300m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: zone-29
+    namespace: metaverse
+    labels:
+        app: stgnn-zone
+        zone: zone-29
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            zone: zone-29
+    template:
+        metadata:
+            labels:
+                zone: zone-29
+            annotations:
+                prometheus.io/scrape: "true"
+                prometheus.io/port: "9105"
+        spec:
+            containers:
+                - name: zone-29-container
+                  image: python:3.10-slim
+                  command: ["python3", "-m", "http.server", "8080"]
+                  resources:
+                      requests:
+                          cpu: "300m"
+                      limits:
+                          cpu: "300m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: zone-30
+    namespace: metaverse
+    labels:
+        app: stgnn-zone
+        zone: zone-30
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            zone: zone-30
+    template:
+        metadata:
+            labels:
+                zone: zone-30
+            annotations:
+                prometheus.io/scrape: "true"
+                prometheus.io/port: "9105"
+        spec:
+            containers:
+                - name: zone-30-container
+                  image: python:3.10-slim
+                  command: ["python3", "-m", "http.server", "8080"]
+                  resources:
+                      requests:
+                          cpu: "300m"
+                      limits:
+                          cpu: "300m"
