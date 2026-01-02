@@ -226,17 +226,5 @@ stgnn_bandwidth_mbps
 
 stgnn_latency_ms
 
-7. Reproducibility for Reviewers
 
-The docs/reproducibility_guide.md explains:
-
-How to reproduce each multimodal encoder
-
-How to run ST-GNN predictions
-
-How to run Kubernetes autoscaling
-
-How to run RL experiments
-
-How to reproduce all figures from the paper
 
