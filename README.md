@@ -123,7 +123,7 @@ Key Components
 
 training/stgnn_training_script.py offline training
 
-inference_api/main.py — FastAPI inference server (/predict)
+inference_api/main.py FastAPI inference server (/predict)
 
 k8s_autoscaler/stgnn_k8s_controller.py — Kubernetes autoscaling logic
 
