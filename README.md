@@ -1,24 +1,27 @@
 Metaverse-STGNN-Multimodal-RL
 
-A Multimodal–Driven Spatio-Temporal GNN and Reinforcement Learning Framework for Metaverse Resource Orchestration
+A Multimodal-Driven Spatio-Temporal GNN and Reinforcement Learning Framework for
+Intent-Aware Resource Orchestration in Metaverse Environments
 
-This repository contains the full experimental implementation from our research testbed integrating:
+Overview
 
-Multimodal encoders (Image → Text, Speech → Text, Motion → Text)
+This repository provides the full experimental implementation of the framework proposed in our manuscript on multimodal, intent-aware resource orchestration for 6G Metaverse workloads.
 
-Spatio-Temporal Graph Neural Network (ST-GNN) for resource prediction
+The system integrates:
 
-FastAPI online inference server
+Multimodal intent extraction (vision, speech, motion)
 
-Kubernetes autoscaling pipeline (Docker Desktop K8s)
+Spatio-Temporal Graph Neural Networks (ST-GNN) for resource forecasting
 
-Prometheus + Grafana monitoring stack
+Semantic–Structural Intent Verification (SSIV)
+
+Intent-Based Networking (IBN) translation
 
 Multi-Agent Reinforcement Learning (MARL) for closed-loop orchestration
 
-Live ST-GNN-driven simulation environment
+Kubernetes-native enforcement with Prometheus/Grafana monitoring
 
-The goal of this system is to demonstrate a real-time, intent-aware, multimodal resource orchestration framework for metaverse environments, aligning with the methodology presented in the paper.
+The implementation is designed to demonstrate real-time, predictive, and intent-assured orchestration consistent with the methodology and evaluation reported in the paper.
 
 Repository Structure
 Metaverse-STGNN-Multimodal-RL/
@@ -45,121 +48,135 @@ Metaverse-STGNN-Multimodal-RL/
 │   ├── inference_api/
 │   ├── k8s_autoscaler/
 │   ├── visualization/
-│   └── data/
+│   └── metrics_exporter.py
 │
 ├── reinforcement_learning/
+│   ├── RL_single_zone.py
+│   ├── RL_multi_zone.py
+│   └── rl_complex_environment.py
+│
+├── data/
 └── utils/
 
-1. Multimodal Encoders (EBLIP, EW2V2, EKAN)
+Multimodal Encoders
 
-This repository includes three pretrained encoders, each aligned with its corresponding dataset as described in the paper:
+Three pretrained modality-specific encoders are implemented, corresponding exactly to the datasets and formulations used in the paper.
 
-Image Encoder — EBLIP(It)
+Vision Encoder EBLIP(Iₜ)
 
 Model: BLIP (Salesforce, image captioning base)
 
 Dataset: PASCAL VOC 2012
 
-Directory: multimodal/image_captioning_BLIP_VOC2012/
+Directory:
+multimodal/image_captioning_BLIP_VOC2012/
 
-Audio Encoder — EW2V2(At)
+Function: Converts visual scenes into semantic textual descriptions capturing user interaction context.
+
+Audio Encoder EW2V2(Aₜ)
 
 Model: Wav2Vec2 Base
 
-Dataset: LibriSpeech train-clean-100
+Dataset: LibriSpeech 
 
-Directory: multimodal/speech_recognition_Wav2Vec2_LibriSpeech/
+Directory:
+multimodal/speech_recognition_Wav2Vec2_LibriSpeech/
 
-Motion Encoder — EKAN(Mt)
+Function: Extracts robust speech representations for speech recognition and intent-related acoustic cues.
+
+Motion Encoder EKAN(Mₜ)
 
 Model: KAN-based motion-to-text encoder
 
 Dataset: KIT Motion-Language (KIT-ML)
 
-Directory: multimodal/motion_captioning_KAN_KITML/
+Directory:
+multimodal/motion_captioning_KAN_KITML/
+
+Function: Models nonlinear spatio-temporal motion and interaction semantics.
+
+Multimodal Output
 
 Each encoder produces a fixed-dimension embedding:
 
-dv = image embedding dimension
+dᵥ: vision embedding dimension
 
-da = audio embedding dimension
+dₐ: audio embedding dimension
 
-dm = motion embedding dimension (128-D as used in our experiments)
+dₘ: motion embedding dimension 
 
-These embeddings feed the ST-GNN for resource forecasting.
+These embeddings are fused via late multimodal fusion and forwarded to the ST-GNN and SSIV modules.
 
-2. Spatio-Temporal GNN (ST-GNN)
+Spatio-Temporal GNN (ST-GNN)
 
-The ST-GNN predicts resource usage for metaverse zones:
+The ST-GNN predicts near-future resource demand for Metaverse orchestration zones:
 
 CPU cores
 
-Memory MB
+Memory (MB)
 
-Bandwidth Mbps
+Bandwidth (Mbps)
 
-Latency ms
+Latency (ms)
 
-Components:
+Key Components
 
-training/stgnn_training_script.py — Offline training
+training/stgnn_training_script.py offline training
 
-inference_api/main.py — FastAPI online server (/predict)
+inference_api/main.py — FastAPI inference server (/predict)
 
-k8s_autoscaler/stgnn_k8s_controller.py — Periodic K8s autoscaling
+k8s_autoscaler/stgnn_k8s_controller.py — Kubernetes autoscaling logic
 
-metrics_exporter.py — Prometheus metrics producer
+metrics_exporter.py — Prometheus metrics export
 
-visualization/stgnn_live_visualization.py — Real-time evolving zone simulation
+visualization/stgnn_live_visualization.py real-time simulation
 
-The ST-GNN receives:
+ST-GNN Input
+(zone_id, active_users, multimodal_intent_embedding)
 
-(zone_name, active_users, multimodal embedding)
+Output
+{CPU, Memory, Bandwidth, Latency} predictions
 
+Kubernetes-Integrated Orchestration
 
-and predicts resource demands.
+A fully reproducible Kubernetes testbed is provided using Docker Desktop.
 
-3. Kubernetes-Integrated Autoscaling
+Features
 
-The repository includes a fully working K8s testbed built using Docker Desktop:
+ST-GNN FastAPI server for real-time inference
 
-Features:
+Python controller applying autoscaling via kubectl
 
-FastAPI ST-GNN server runs locally
+Prometheus scraping prediction-driven metrics
 
-Python controller triggers K8s autoscaling through kubectl set resources
+Grafana dashboards for visualization
 
-Prometheus scrapes ST-GNN predictions as metrics
-
-Grafana visualizes real-time performance
-
-Kubernetes Files:
+Kubernetes Manifests
 
 stgnn-zones.yaml
 
 prometheus-configmap.yaml
 
-This creates a reproducible orchestration loop connecting ML → prediction → autoscaling → monitoring.
+This establishes a closed-loop ML → prediction → orchestration → monitoring pipeline.
 
-4. Reinforcement Learning Agents
+Reinforcement Learning Agents
 
-The reinforcement_learning/ directory contains:
+The reinforcement_learning/ directory contains multiple RL configurations:
+
+Implemented Agents
 
 Single-Zone DQN (baseline)
-
 RL_single_zone.py
 
-Multi-Zone MARL with global + local rewards
-
+Multi-Zone MARL (local + global rewards)
 RL_multi_zone.py
 
-Full complex scenario
-
+Complex scenario with drift detection
 rl_complex_environment.py
 
-These agents learn:
+Optimized Objectives
 
-Autoscaling
+Autoscaling decisions
 
 Load balancing
 
@@ -167,56 +184,51 @@ Bandwidth allocation
 
 Latency minimization
 
-RL integrates with the ST-GNN predictions to form a closed-loop controller.
+SLA adherence
 
-5. Live Simulation Environment
+RL agents consume ST-GNN predictions and verified intents to perform stable, closed-loop orchestration.
 
-stgnn_live_visualization.py renders:
+Live Simulation Environment
 
-Zones
+The live visualization renders:
 
-Nodes
+Orchestration zones and nodes
 
-Live predicted resource values
+Predicted resource trajectories
 
-Growth, decay, movement
+Growth/decay dynamics
 
 Real-time API calls
 
-Kubernetes updates (simulated)
+Kubernetes updates 
 
-This produces a continuous orchestration animation, ideal for demonstration or evaluation.
+This component is ideal for demonstrations and qualitative evaluation.
 
-Installation
-1. Create environment
+Installation & Execution
+1. Create Environment
 conda create -n metaverse python=3.10
 conda activate metaverse
 
-2. Install dependencies
+2. Install Dependencies
 pip install -r requirements.txt
 
-3. Start ST-GNN API
+3. Start ST-GNN Inference API
 uvicorn stgnn.inference_api.main:app --reload --host 0.0.0.0 --port 8000
 
-4. Run autoscaler
+4. Run Kubernetes Autoscaler
 python stgnn/k8s_autoscaler/stgnn_k8s_controller.py
 
-5. Start simulation
+5. Launch Live Simulation
 python stgnn/visualization/stgnn_live_visualization.py
 
-6. Monitoring with Prometheus & Grafana
-
-Port-forward Prometheus:
-
+Monitoring with Prometheus & Grafana
+Prometheus
 kubectl port-forward svc/prometheus-server 9090:80
 
-
-Port-forward Grafana:
-
+Grafana
 kubectl port-forward grafana-xxxx 3000:3000
 
-
-Metric names available:
+Exported Metrics
 
 stgnn_cpu_cores
 
@@ -225,6 +237,14 @@ stgnn_memory_mb
 stgnn_bandwidth_mbps
 
 stgnn_latency_ms
+
+Reproducibility Notes
+
+All datasets used are publicly available
+
+Training and inference pipelines are separated
+
+Experiments align with manuscript evaluation settings
 
 
 
